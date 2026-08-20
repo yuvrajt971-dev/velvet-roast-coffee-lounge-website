@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Roast Coffee Lounge | Artisan Coffee & Cafe in Seattle</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%237C2D12' d='M18 10h-1V7c0-2.76-2.24-5-5-5S7 4.24 7 7v3H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm-9 0V7c0-1.66 1.34-3 3-3s3 1.34 3 3v3H9zm9 10H6v-8h12v8zM12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E" type="image/svg+xml">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary-bg: #f5f5f4; /* stone-100 */
+            --color-primary-text: #44403c; /* stone-800 */
+            --color-accent-dark: #7c2d12; /* amber-800 */
+            --color-accent-light: #fcd34d; /* amber-300 for highlights */
+            --color-accent-text: #fff; /* white */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary-bg);
+            color: var(--color-primary-text);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .text-gradient-coffee {
+            background: linear-gradient(to right, #44403c, #7c2d12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-primary {
+            @apply px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out;
+            background-color: var(--color-accent-dark);
+            color: var(--color-accent-text);
+        }
+        .btn-primary:hover {
+            @apply shadow-lg transform -translate-y-1;
+            background-color: #9A3412; /* slightly darker amber-800 */
+        }
+        .btn-secondary {
+            @apply px-8 py-3 rounded-full font-semibold border-2 transition-all duration-300 ease-in-out;
+            border-color: var(--color-accent-dark);
+            color: var(--color-accent-dark);
+        }
+        .btn-secondary:hover {
+            @apply shadow-lg transform -translate-y-1;
+            background-color: var(--color-accent-dark);
+            color: var(--color-accent-text);
+        }
+        .shadow-custom {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .card-bg {
+            background-color: #fff;
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800 leading-relaxed">
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="bg-white shadow-sm py-4 fixed w-full z-50 top-0 transition-all duration-300 ease-in-out">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold text-gradient-coffee">Velvet Roast</a>
+            
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-amber-800 transition-colors duration-200 font-medium">Home</a>
+                <a href="#menu" class="hover:text-amber-800 transition-colors duration-200 font-medium">Menu</a>
+                <a href="#about" class="hover:text-amber-800 transition-colors duration-200 font-medium">About</a>
+                <a href="#reviews" class="hover:text-amber-800 transition-colors duration-200 font-medium">Reviews</a>
+                <a href="#reserve" class="hover:text-amber-800 transition-colors duration-200 font-medium">Reserve</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-stone-800 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-4 shadow-lg">
+            <div class="flex flex-col items-center space-y-4">
+                <a href="#home" class="hover:text-amber-800 transition-colors duration-200 font-medium py-2" onclick="closeMobileMenu()">Home</a>
+                <a href="#menu" class="hover:text-amber-800 transition-colors duration-200 font-medium py-2" onclick="closeMobileMenu()">Menu</a>
+                <a href="#about" class="hover:text-amber-800 transition-colors duration-200 font-medium py-2" onclick="closeMobileMenu()">About</a>
+                <a href="#reviews" class="hover:text-amber-800 transition-colors duration-200 font-medium py-2" onclick="closeMobileMenu()">Reviews</a>
+                <a href="#reserve" class="hover:text-amber-800 transition-colors duration-200 font-medium py-2" onclick="closeMobileMenu()">Reserve</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-gradient-to-br from-amber-50 to-stone-200 overflow-hidden">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="text-center md:text-left md:w-1/2">
+                <h1 class="text-5xl lg:text-6xl font-extrabold mb-6 text-gradient-coffee leading-tight">
+                    Experience the Soul of Seattle in Every Sip
+                </h1>
+                <p class="text-lg lg:text-xl text-stone-700 mb-8 max-w-xl mx-auto md:mx-0">
+                    Velvet Roast Coffee Lounge invites you to savor premium, ethically sourced artisan coffee and delightful pastries in the heart of downtown Seattle.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                    <a href="#menu" class="btn-primary">
+                        Explore Our Menu <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#reserve" class="btn-secondary">
+                        Make a Reservation
+                    </a>
+                </div>
+            </div>
+            <div class="relative w-full md:w-1/2 flex justify-center mt-10 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1507138086030-616c3b6db768?w=600&auto=format&fit=crop"
+                     alt="Artisan Coffee Preparation by a Barista"
+                     class="w-full max-w-md aspect-square object-cover rounded-3xl shadow-2xl border-4 border-amber-800 transition-transform duration-500 ease-in-out hover:scale-105 hover:rotate-1">
+                <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-xl hidden sm:block transform rotate-3">
+                    <p class="font-bold text-amber-800 text-lg">Velvet Roast Signature</p>
+                    <p class="text-sm text-stone-600">Purely Crafted Coffee</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Highlights Section -->
+    <section id="menu" class="py-20 lg:py-28 bg-stone-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gradient-coffee mb-12">
+                Our Signature Offerings
+            </h2>
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Espresso Card -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl transition-all duration-300 ease-in-out hover-lift">
+                    <div class="text-amber-800 text-5xl mb-6">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-stone-800">Espresso & Coffee Classics</h3>
+                    <p class="text-stone-700 leading-relaxed mb-4">
+                        Hand-pulled shots from single-origin, organic beans. Experience the rich depth of our lattes, cappuccinos, and Americanos.
+                    </p>
+                    <a href="#reserve" class="text-amber-800 font-medium hover:underline">View Details <i class="fas fa-chevron-right text-sm ml-1"></i></a>
+                </div>
+
+                <!-- Cold Brew Card -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl transition-all duration-300 ease-in-out hover-lift">
+                    <div class="text-amber-800 text-5xl mb-6">
+                        <i class="fas fa-glass-water"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-stone-800">Refreshing Cold Brews</h3>
+                    <p class="text-stone-700 leading-relaxed mb-4">
+                        Our 24-hour slow-steeped cold brew offers a smooth, low-acid experience. Perfect for a sunny Seattle afternoon.
+                    </p>
+                    <a href="#reserve" class="text-amber-800 font-medium hover:underline">View Details <i class="fas fa-chevron-right text-sm ml-1"></i></a>
+                </div>
+
+                <!-- Pastries Card -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl transition-all duration-300 ease-in-out hover-lift">
+                    <div class="text-amber-800 text-5xl mb-6">
+                        <i class="fas fa-croissant"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-stone-800">Artisan Baked Pastries</h3>
+                    <p class="text-stone-700 leading-relaxed mb-4">
+                        Freshly baked croissants, scones, and cookies crafted daily with premium, local ingredients. The perfect pairing.
+                    </p>
+                    <a href="#reserve" class="text-amber-800 font-medium hover:underline">View Details <i class="fas fa-chevron-right text-sm ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-28 bg-stone-100">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gradient-coffee mb-8">
+                    Our Passion for the Perfect Brew
+                </h2>
+                <p class="text-lg text-stone-700 mb-6">
+                    At Velvet Roast Coffee Lounge, we believe that exceptional coffee starts with exceptional beans. We meticulously source only the finest organic, fair-trade coffee beans from around the globe, ensuring every cup not only tastes exquisite but also supports sustainable practices.
+                </p>
+                <p class="text-lg text-stone-700 mb-6">
+                    Nestled in the vibrant heart of downtown Seattle, our lounge is designed to be your cozy escape. From the rich aroma of freshly roasted beans to the warm embrace of our inviting atmosphere, we've created a space where you can relax, connect, and truly savor the moment.
+                </p>
+                <p class="text-lg text-stone-700 font-semibold mb-6">
+                    Join us for an artisanal coffee experience crafted with care, expertise, and a genuine love for coffee.
+                </p>
+                <a href="#reserve" class="btn-primary">
+                    Visit Us Today <i class="fas fa-map-marker-alt ml-2"></i>
+                </a>
+            </div>
+            <div class="lg:w-1/2 flex justify-center lg:justify-end">
+                <img src="https://images.unsplash.com/photo-1507138086030-616c3b6db768?w=600&auto=format&fit=crop"
+                     alt="Artisan Coffee Master at work"
+                     class="w-full max-w-lg aspect-video object-cover rounded-3xl shadow-2xl border-4 border-amber-800 transition-transform duration-500 ease-in-out hover:scale-105 hover:-rotate-1">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="reviews" class="py-20 lg:py-28 bg-stone-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-gradient-coffee mb-12">
+                What Our Guests Say
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Testimonial 1 -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl flex flex-col items-center text-center transition-all duration-300 ease-in-out hover-lift">
+                    <i class="fas fa-quote-left text-amber-300 text-3xl mb-4"></i>
+                    <p class="text-lg italic text-stone-700 mb-6">
+                        "Velvet Roast is my absolute favorite coffee spot in Seattle. The atmosphere is so warm and inviting, and their lattes are simply divine. A true gem!"
+                    </p>
+                    <p class="font-semibold text-stone-800">- Sarah L.</p>
+                    <p class="text-sm text-stone-600">Local Resident</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl flex flex-col items-center text-center transition-all duration-300 ease-in-out hover-lift">
+                    <i class="fas fa-quote-left text-amber-300 text-3xl mb-4"></i>
+                    <p class="text-lg italic text-stone-700 mb-6">
+                        "The cold brew at Velvet Roast is unmatched! Smooth, rich, and never bitter. Plus, their croissants are a perfect match. Highly recommend!"
+                    </p>
+                    <p class="font-semibold text-stone-800">- Mark T.</p>
+                    <p class="text-sm text-stone-600">Coffee Enthusiast</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="card-bg p-8 shadow-custom rounded-3xl flex flex-col items-center text-center transition-all duration-300 ease-in-out hover-lift">
+                    <i class="fas fa-quote-left text-amber-300 text-3xl mb-4"></i>
+                    <p class="text-lg italic text-stone-700 mb-6">
+                        "I love how Velvet Roast uses organic beans. You can truly taste the quality and care in every single drink. A must-visit cafe in downtown Seattle."
+                    </p>
+                    <p class="font-semibold text-stone-800">- Jessica R.</p>
+                    <p class="text-sm text-stone-600">Visitor from Portland</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Reservation Form Section -->
+    <section id="reserve" class="py-20 lg:py-28 bg-stone-100">
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gradient-coffee mb-8">
+                    Reserve Your Table
+                </h2>
+                <p class="text-lg text-stone-700 mb-6 max-w-xl mx-auto lg:mx-0">
+                    Planning to visit with a group or prefer a guaranteed spot? Use our simple form to reserve a table at Velvet Roast Coffee Lounge. We look forward to welcoming you!
+                </p>
+                <div class="space-y-4 text-stone-700 text-lg mb-8">
+                    <p><i class="fas fa-map-marker-alt text-amber-800 mr-3"></i> 123 Artisan Ave, Downtown Seattle, WA 98101</p>
+                    <p><i class="fas fa-phone-alt text-amber-800 mr-3"></i> (206) 555-ROAST</p>
+                    <p><i class="fas fa-envelope text-amber-800 mr-3"></i> info@velvetroast.com</p>
+                    <p><i class="fas fa-clock text-amber-800 mr-3"></i> Mon-Fri: 7 AM - 6 PM, Sat-Sun: 8 AM - 5 PM</p>
+                </div>
+            </div>
+            <div class="lg:w-1/2 w-full card-bg p-8 shadow-custom rounded-3xl transition-all duration-300 ease-in-out hover-lift">
+                <form action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-stone-700">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" placeholder="Your Full Name" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-stone-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" placeholder="your@example.com" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-stone-700">Date</label>
+                            <input type="date" id="date" name="date" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" required>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-medium text-stone-700">Time</label>
+                            <input type="time" id="time" name="time" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="guests" class="block text-sm font-medium text-stone-700">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="10" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" placeholder="e.g., 2" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-stone-700">Special Requests (Optional)</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-stone-300 rounded-md shadow-sm p-3 focus:border-amber-700 focus:ring-amber-700 transition-colors duration-200" placeholder="Any specific seating preference or dietary needs?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full text-center">
+                        Submit Reservation <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-800 text-stone-300 py-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <h3 class="text-2xl font-bold text-amber-50 mb-4">Velvet Roast</h3>
+                <p class="text-stone-400 leading-relaxed">
+                    Your cozy corner for premium artisan coffee and delightful moments in downtown Seattle.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-amber-50 mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-amber-300 transition-colors duration-200">Home</a></li>
+                    <li><a href="#menu" class="hover:text-amber-300 transition-colors duration-200">Menu</a></li>
+                    <li><a href="#about" class="hover:text-amber-300 transition-colors duration-200">About Us</a></li>
+                    <li><a href="#reviews" class="hover:text-amber-300 transition-colors duration-200">Reviews</a></li>
+                    <li><a href="#reserve" class="hover:text-amber-300 transition-colors duration-200">Reserve a Table</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold text-amber-50 mb-4">Connect With Us</h3>
+                <p class="text-stone-400">123 Artisan Ave, Seattle, WA 98101</p>
+                <p class="text-stone-400">(206) 555-ROAST</p>
+                <p class="text-stone-400">info@velvetroast.com</p>
+                <div class="flex justify-center md:justify-start space-x-4 mt-4 text-2xl">
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-200"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-300 transition-colors duration-200"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-stone-700 mt-8 pt-8 text-center text-stone-500 text-sm">
+            &copy; 2023 Velvet Roast Coffee Lounge. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scroll and mobile menu -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.querySelector('i').classList.remove('fa-times');
+            mobileMenuButton.querySelector('i').classList.add('fa-bars');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    closeMobileMenu();
+                }
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Optional: Close mobile menu on scroll (for desktop resize or if user starts scrolling)
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth < 768 && !mobileMenu.classList.contains('hidden') && Math.abs(window.scrollY - lastScrollY) > 50) {
+                closeMobileMenu();
+            }
+            lastScrollY = window.scrollY;
+        });
+
+    </script>
+</body>
+</html>
